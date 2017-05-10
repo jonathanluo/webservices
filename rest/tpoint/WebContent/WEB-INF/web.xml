@@ -1,26 +1,37 @@
-<?xml version = "1.0" encoding = "UTF-8"?> 
+<?xml version = "1.0" encoding = "UTF-8"?>
 <web-app xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"  
    xmlns = "http://java.sun.com/xml/ns/javaee"  
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  
    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
-   id = "WebApp_ID" version = "3.0"> 
-   <display-name>User Management</display-name> 
-   <servlet> 
-      <servlet-name>Jersey RESTful Application</servlet-name> 
+   id = "WebApp_ID" version = "3.0">
+   <display-name>User Management</display-name>
+   <servlet>
+      <servlet-name>Jersey RESTful Application</servlet-name>
       <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+
       <!-- http://stackoverflow.com/questions/37234427/how-to-specify-multiple-package-names-for-service-classes-in-rest-web-service-us -->
-      <init-param> 
-         <param-name>jersey.config.server.provider.packages</param-name> 
-         <param-value>com.tutorialspoint,com.javatpoint.rest</param-value> 
-      </init-param> 
-      <!-- The following not working -->
+      <init-param>
+         <param-name>jersey.config.server.provider.packages</param-name>
+         <param-value>com.tutorialspoint, com.javatpoint.rest</param-value>
+      </init-param>
+
+      <!-- https://www.javatpoint.com/jax-rs-file-upload-example -->
+      <init-param>
+         <param-name>jersey.config.server.provider.classnames</param-name>
+         <param-value>org.glassfish.jersey.filter.LoggingFilter,  
+                      org.glassfish.jersey.media.multipart.MultiPartFeature
+         </param-value>
+      </init-param>
+
+       <!-- The following not working for -->
       <init-param>
          <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
          <param-value>true</param-value>
       </init-param>
+
    </servlet>
-   <servlet-mapping> 
-      <servlet-name>Jersey RESTful Application</servlet-name> 
-      <url-pattern>/rest/*</url-pattern> 
-   </servlet-mapping>   
+   <servlet-mapping>
+      <servlet-name>Jersey RESTful Application</servlet-name>
+      <url-pattern>/rest/*</url-pattern>
+   </servlet-mapping>
 </web-app>

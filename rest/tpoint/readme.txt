@@ -2,11 +2,15 @@
 https://www.tutorialspoint.com/restful/restful_first_application.htm
 https://www.tutorialspoint.com/restful/restful_methods.htm
 
+Download jersey from https://jersey.java.net/download.html
+Download Download JAR file jersey-media-multipart 2.25.1 with all dependencies
+    https://jar-download.com/explore-java-source-code.php?a=jersey-media-multipart&g=org.glassfish.jersey.media&v=2.25.1&downloadable=1
+
 Copy all jars from following directories of download jersey zip folder in WEB-INF/lib directory of the project.
 
 cp /j01/sys/jaxrs-ri-2.25.1/api/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
 cp /j01/sys/jaxrs-ri-2.25.1/ext/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
-cp /j01/sys/jaxrs-ri-2.25.1//lib/* ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
+cp /j01/sys/jaxrs-ri-2.25.1/lib/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
 
 Creating the WebContent/WEB-INF/Web.xml configuration File
 
@@ -34,3 +38,6 @@ http://localhost:8080/UserManagement/rest/UserService/users
 https://www.javatpoint.com/jax-rs-file-download-example
 Test text/image files download
 http://localhost:8080/UserManagement/download.html
+
+Test file upload
+http://localhost:8080/UserManagement/upload.html
