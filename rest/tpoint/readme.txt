@@ -1,3 +1,4 @@
+1)
 https://www.tutorialspoint.com/restful/restful_first_application.htm
 https://www.tutorialspoint.com/restful/restful_methods.htm
 
@@ -28,3 +29,8 @@ http://localhost:8080/UserManagement/rest/UserService/users
     <profession>Teacher</profession>
   </user>
 </users>
+
+2)
+https://www.javatpoint.com/jax-rs-file-download-example
+Test text/image files download
+http://localhost:8080/UserManagement/download.html

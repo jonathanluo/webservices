@@ -7,12 +7,18 @@
    <display-name>User Management</display-name> 
    <servlet> 
       <servlet-name>Jersey RESTful Application</servlet-name> 
-      <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> 
+      <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+      <!-- http://stackoverflow.com/questions/37234427/how-to-specify-multiple-package-names-for-service-classes-in-rest-web-service-us -->
       <init-param> 
          <param-name>jersey.config.server.provider.packages</param-name> 
-         <param-value>com.tutorialspoint</param-value> 
+         <param-value>com.tutorialspoint,com.javatpoint.rest</param-value> 
       </init-param> 
-   </servlet> 
+      <!-- The following not working -->
+      <init-param>
+         <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+         <param-value>true</param-value>
+      </init-param>
+   </servlet>
    <servlet-mapping> 
       <servlet-name>Jersey RESTful Application</servlet-name> 
       <url-pattern>/rest/*</url-pattern> 
