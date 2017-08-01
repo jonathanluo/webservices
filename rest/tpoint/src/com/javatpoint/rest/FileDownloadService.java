@@ -8,19 +8,42 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 
 
 /**
- * https://www.javatpoint.com/jax-rs-file-download-example
+   https://www.javatpoint.com/jax-rs-file-download-example
+   web.xml
+     <servlet-mapping>
+       <servlet-name>Jersey RESTful Application</servlet-name>
+       <url-pattern>/rest/*</url-pattern>
+     </servlet-mapping>
+
+   download.xml
+    <html>
+        <a href="rest/files/txt">Download Text File</a>
+        <br/>
+        <br/>
+        <a href="rest/files/image">Download Image File</a>
+    </html>
+
+    You need to specify different content type to download different files. The @Produces annotation is used to specify 
+    the type of file content.
+
+    @Produces("text/plain"): for downloading text file.
+    @Produces("image/png"): for downloading png image file.
+    @Produces("application/pdf"): for downloading PDF file.
+    @Produces("application/vnd.ms-excel"): for downloading excel file.
+    @Produces("application/msword"): for downloading ms word file.
+
  */
 @Path("/files")
 public class FileDownloadService {
-	private static final String FILE_PATH = "/j01/srv/tomcat/bin/startup.sh";
-	@GET
-	@Path("/txt")
-	@Produces("text/plain")
-	public Response getFile() {
-		File file = new File(FILE_PATH);
+    private static final String FILE_PATH = "/j01/srv/tomcat/bin/startup.sh";
+    @GET
+    @Path("/txt")
+    @Produces("text/plain") // for downloading text file.
+    public Response getFile() {
+        File file = new File(FILE_PATH);
 
-		ResponseBuilder response = Response.ok((Object) file);
-		response.header("Content-Disposition","attachment; filename=\"javatpoint_file.txt\"");
-		return response.build();
-	}
+        ResponseBuilder response = Response.ok((Object) file);
+        response.header("Content-Disposition","attachment; filename=\"javatpoint_file.txt\"");
+        return response.build();
+    }
 }

@@ -13,7 +13,17 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 /**
- * https://www.javatpoint.com/jax-rs-file-upload-example
+   https://www.javatpoint.com/jax-rs-file-upload-example
+   web.xml
+     <servlet-mapping>
+       <servlet-name>Jersey RESTful Application</servlet-name>
+       <url-pattern>/rest/*</url-pattern>
+     </servlet-mapping>
+
+   upload.xml
+   <form action="rest/files/upload" method="post" enctype="multipart/form-data">
+   ...
+   </form>
  */
 @Path("/files")  
 public class FileUploadService {
