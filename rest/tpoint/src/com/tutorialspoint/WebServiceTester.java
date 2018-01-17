@@ -25,14 +25,22 @@ public class WebServiceTester  {
       WebServiceTester tester = new WebServiceTester();
       //initialize the tester
       tester.init();
+
       //test get all users Web Service Method
       tester.testGetAllUsers();
+
       //test get user Web Service Method 
       tester.testGetUser();
+
+      //test get user (json) Web Service Method 
+      tester.testGetUserJson();
+
       //test update user Web Service Method
       tester.testUpdateUser();
+
       //test add user Web Service Method
       tester.testAddUser();
+
       //test delete user Web Service Method
       tester.testDeleteUser();
    }
@@ -68,6 +76,21 @@ public class WebServiceTester  {
       }
       System.out.println("Test case name: testGetUser, Result: " + result );
    }
+
+   private void testGetUserJson(){
+      User sampleUser = new User();
+      sampleUser.setId(1);
+
+      String str = client
+         .target(REST_SERVICE_URL)
+         .path("/json/{userid}")
+         .resolveTemplate("userid", 1)
+         .request(MediaType.APPLICATION_JSON).get(String.class);
+
+      System.out.println("Test case name: testGetUserJson, Result: " + str );
+      System.out.println("Test case name: testGetUserJson, Result: " + PASS );
+   }
+
    //Test: Update User of id 1
    //Test: Check if result is success XML.
    private void testUpdateUser(){

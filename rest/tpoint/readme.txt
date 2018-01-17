@@ -1,6 +1,19 @@
-1)
-https://www.tutorialspoint.com/restful/restful_first_application.htm
-https://www.tutorialspoint.com/restful/restful_methods.htm
+2) https://www.javatpoint.com/jax-rs-file-download-example
+   src/com/javatpoint contains
+    FileDownloadService
+    FileUploadService
+    ImageDownloadService
+
+    http://localhost:8080/UserManagement/download.html
+        Download Text File 
+        Download Image File
+
+    http://localhost:8080/UserManagement/upload.html
+        File Upload Example
+
+2) https://www.tutorialspoint.com/restful/restful_first_application.htm
+   https://www.tutorialspoint.com/restful/restful_methods.htm
+   src/com/tutorialspoint
 
 Download jersey from https://jersey.java.net/download.html
 Download Download JAR file jersey-media-multipart 2.25.1 with all dependencies
@@ -34,10 +47,8 @@ http://localhost:8080/UserManagement/rest/UserService/users
   </user>
 </users>
 
-2)
-https://www.javatpoint.com/jax-rs-file-download-example
-Test text/image files download
-http://localhost:8080/UserManagement/download.html
+http://localhost:8088/UserManagement/rest/UserService/users/json/1
 
-Test file upload
-http://localhost:8080/UserManagement/upload.html
+{"id":"1","name":"suresh","profession":"clerk"}
+
+Right click on WebServiceTester.java, Run As > Java Application

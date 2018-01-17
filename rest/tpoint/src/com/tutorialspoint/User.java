@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "user")
 public class User implements Serializable {
-
    private static final long serialVersionUID = 1L;
    private int id;
    private String name;
@@ -40,7 +39,7 @@ public class User implements Serializable {
    @XmlElement
    public void setProfession(String profession) {
       this.profession = profession;
-   }	
+   }
 
    @Override
    public boolean equals(Object object){
@@ -55,8 +54,26 @@ public class User implements Serializable {
             && profession.equals(user.getProfession())
          ){
             return true;
-         }			
+         }
       }
       return false;
-   }	
+   }
+
+   public String toJson() {
+       StringBuffer sb = new StringBuffer();
+       sb.append("{");
+       sb.append("\"id\":\"").append(id).append("\",");
+       sb.append("\"name\":\"").append(name).append("\",");
+       sb.append("\"profession\":\"").append(profession).append("\"");
+       sb.append("}");
+       return sb.toString();
+   }
+
+   public String toString() {
+       StringBuffer sb = new StringBuffer();
+       sb.append("id:").append(id);
+       sb.append(",name:").append(name);
+       sb.append(",profession:").append(profession);
+       return sb.toString();
+   }
 }

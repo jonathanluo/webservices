@@ -39,6 +39,13 @@ public class UserService {
       return userDao.getUser(userid);
    }
 
+   @GET
+   @Path("/users/json/{userid}")
+   @Produces(MediaType.APPLICATION_JSON)
+   public String getUserJson(@PathParam("userid") int userid){
+      return userDao.getUser(userid).toJson();
+   }
+
    @POST
    @Path("/users")
    @Produces(MediaType.APPLICATION_XML)
