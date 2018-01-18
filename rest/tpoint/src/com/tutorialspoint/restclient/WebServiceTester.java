@@ -1,4 +1,4 @@
-package com.tutorialspoint;
+package com.tutorialspoint.restclient;
 
 import java.util.List;
 
@@ -8,14 +8,25 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import com.tutorialspoint.*;
 
+/**
+ * http://www.vogella.com/tutorials/REST/article.html#rest
+ * https://www.tutorialspoint.com/restful/restful_first_application.htm
+ * https://www.tutorialspoint.com/restful/restful_methods.htm
+ */
 public class WebServiceTester  {
 
-   private Client client;
-   private String REST_SERVICE_URL = "http://localhost:8080/UserManagement/rest/UserService/users";
+   // http://www.tomchristie.com/rest-framework-2-docs/api-guide/authentication
+   // https://docs.djangoproject.com/en/2.0/topics/auth/default/
+   private static String ACCESS_TOKEN = "567c...90b";
+
+   private static String REST_SERVICE_URL = "http://localhost:8080/UserManagement/rest/UserService/users";
    private static final String SUCCESS_RESULT="<result>success</result>";
    private static final String PASS = "pass";
    private static final String FAIL = "fail";
+
+   private Client client;
 
    private void init(){
       this.client = ClientBuilder.newClient();
@@ -90,6 +101,22 @@ public class WebServiceTester  {
       System.out.println("Test case name: testGetUserJson, Result: " + str );
       System.out.println("Test case name: testGetUserJson, Result: " + PASS );
    }
+
+   private void testGetUserJsonUsingTokenAuthentication(){
+          User sampleUser = new User();
+          sampleUser.setId(1);
+
+          String str = client
+             .target(REST_SERVICE_URL)
+             .path("/json/{userid}")
+             .resolveTemplate("userid", 1)
+             .request(MediaType.APPLICATION_JSON)
+             .header("Authorization", "Token " + ACCESS_TOKEN)
+             .get(String.class);
+
+          System.out.println("Test case name: testGetUserJson, Result: " + str );
+          System.out.println("Test case name: testGetUserJson, Result: " + PASS );
+       }
 
    //Test: Update User of id 1
    //Test: Check if result is success XML.
