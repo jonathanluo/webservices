@@ -14,6 +14,7 @@ import com.tutorialspoint.*;
  * http://www.vogella.com/tutorials/REST/article.html#rest
  * https://www.tutorialspoint.com/restful/restful_first_application.htm
  * https://www.tutorialspoint.com/restful/restful_methods.htm
+ * https://vaadin.com/blog/consuming-rest-services-from-java-applications
  */
 public class WebServiceTester  {
 

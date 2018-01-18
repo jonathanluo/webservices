@@ -11,6 +11,7 @@ import org.glassfish.jersey.client.ClientConfig;
 /**
  * https://www.javatpoint.com/jax-rs-example-jersey
  * http://www.vogella.com/tutorials/REST/article.html#rest
+ * https://vaadin.com/blog/consuming-rest-services-from-java-applications
  */
 public class ClientTest {
 
