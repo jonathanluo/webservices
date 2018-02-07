@@ -80,6 +80,8 @@ public class ClientTest {
 
     /**
      * https://coderanch.com/t/383310/java/parse-url-query-string-parameter
+     * https://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
+     *
      * @param queryParams e.g. limit=100&pageSize=10
      * @return
      */
