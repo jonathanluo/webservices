@@ -8,6 +8,9 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+
+import org.json.JSONObject;
+
 import com.tutorialspoint.*;
 
 /**
@@ -16,7 +19,7 @@ import com.tutorialspoint.*;
  * https://www.tutorialspoint.com/restful/restful_methods.htm
  * https://vaadin.com/blog/consuming-rest-services-from-java-applications
  */
-public class WebServiceTester  {
+public class JerseyRestTestClient  {
 
    // http://www.tomchristie.com/rest-framework-2-docs/api-guide/authentication
    // https://docs.djangoproject.com/en/2.0/topics/auth/default/
@@ -34,7 +37,7 @@ public class WebServiceTester  {
    }
 
    public static void main(String[] args){
-      WebServiceTester tester = new WebServiceTester();
+      JerseyRestTestClient tester = new JerseyRestTestClient();
       //initialize the tester
       tester.init();
 
@@ -104,20 +107,20 @@ public class WebServiceTester  {
    }
 
    private void testGetUserJsonUsingTokenAuthentication(){
-          User sampleUser = new User();
-          sampleUser.setId(1);
+      User sampleUser = new User();
+      sampleUser.setId(1);
 
-          String str = client
-             .target(REST_SERVICE_URL)
-             .path("/json/{userid}")
-             .resolveTemplate("userid", 1)
-             .request(MediaType.APPLICATION_JSON)
-             .header("Authorization", "Token " + ACCESS_TOKEN)
-             .get(String.class);
+      String str = client
+         .target(REST_SERVICE_URL)
+         .path("/json/{userid}")
+         .resolveTemplate("userid", 1)
+         .request(MediaType.APPLICATION_JSON)
+         .header("Authorization", "Token " + ACCESS_TOKEN)
+         .get(String.class);
 
-          System.out.println("Test case name: testGetUserJson, Result: " + str );
-          System.out.println("Test case name: testGetUserJson, Result: " + PASS );
-       }
+      System.out.println("Test case name: testGetUserJson, Result: " + str );
+      System.out.println("Test case name: testGetUserJson, Result: " + PASS );
+   }
 
    //Test: Update User of id 1
    //Test: Check if result is success XML.
@@ -162,6 +165,7 @@ public class WebServiceTester  {
 
       System.out.println("Test case name: testAddUser, Result: " + result );
    }
+
    //Test: Delete User of id 2
    //Test: Check if result is success XML.
    private void testDeleteUser(){
