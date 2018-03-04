@@ -16,12 +16,16 @@ import com.tutorialspoint.User;
  * https://www.tutorialspoint.com/restful/restful_first_application.htm
  * https://www.tutorialspoint.com/restful/restful_methods.htm
  * https://vaadin.com/blog/consuming-rest-services-from-java-applications
+ * 
+ * http://www.tomchristie.com/rest-framework-2-docs/api-guide/authentication
+ * https://docs.djangoproject.com/en/2.0/topics/auth/default/
  */
 public class JerseyRestPostClient {
 
-    // http://www.tomchristie.com/rest-framework-2-docs/api-guide/authentication
-    // https://docs.djangoproject.com/en/2.0/topics/auth/default/
-
+    /**
+     https://howtodoinjava.com/jersey/jersey-restful-client-examples/
+     Jersey REST Client HTTP POST Example
+    */
     private static String REST_SERVICE_URL = "http://localhost:8000";
     private Client client;
     private String token;
@@ -74,10 +78,10 @@ public class JerseyRestPostClient {
         JSONObject obj = new JSONObject(data);
         JSONArray jsonEntries = (JSONArray) obj.get("results");
         if (jsonEntries != null) {
-        for (int i = 0; i < jsonEntries.length(); i++) {
-	            JSONObject jsonEntry = (JSONObject) jsonEntries.get(i);
-	            System.out.println("item " + (i+1) + ": " + jsonEntry.toString());
-	        }
+            for (int i = 0; i < jsonEntries.length(); i++) {
+                JSONObject jsonEntry = (JSONObject) jsonEntries.get(i);
+                System.out.println("item " + (i+1) + ": " + jsonEntry.toString());
+            }
         }
-     }
+    }
 }
