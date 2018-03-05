@@ -84,5 +84,7 @@ public class JerserFileUploadClient {
 
     public static void main(String[] args) {
         new JerserFileUploadClient(new File("/home/moonwave/Pictures/track-and-field.jpg"));
+        new JerserFileUploadClient(new File("/home/moonwave/Pictures/pydev-run-1.png"));
+        new JerserFileUploadClient(new File("/home/moonwave/Pictures/pydev-run-2.png"));
     }
 }
