@@ -18,6 +18,14 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.util.EntityUtils;
 
 /**
+ * https://github.com/JavaTutorialNetwork/Tutorials
+ * 1) starts django rest fileupload service
+ *    cd ~/workspace/github/drachen/django/django-rest-fileupload
+ *    . ~/venv/bin/activate
+ *    python3 manage.py runserver
+ *
+ * 2) FileUploaderClient > Run As > java Application
+ *
  * This example shows how to upload files using POST requests 
  * with encryption type "multipart/form-data".
  *
@@ -31,8 +39,7 @@ public class FileUploaderClient {
     public static void main(String[] args) {
 
         // the file we want to upload
-        String inFile = "/home/moonwave/Pictures/pydev-run-1.png";
-//        File inFile = new File("/home/moonwave/Pictures/pydev-run-1.png");
+        File inFile = new File("/home/moonwave/Pictures/pydev-run-1.png");
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(inFile);
@@ -42,18 +49,15 @@ public class FileUploaderClient {
             HttpPost httppost = new HttpPost("http://localhost:8000/file/upload/");
             MultipartEntity entity = new MultipartEntity();
 
-//            new FileEntity(new File(getClass().getResource("/tomtom/download/test.metalink").toURI())
             // set the file input stream and file name as arguments
-            entity.addPart("file", new FileEntity(new File(FileUploaderClient.class.getResource(inFile).toURI())));
-//            entity.addPart("file", new InputStreamBody(fis, inFile.getName()));
-//            mutiEntity.addPart("LogFile", new FileBody(file)); // https://www.programcreek.com/java-api-examples/org.apache.http.entity.mime.MultipartEntity
-            entity.addPart("remark", new StringBody("{\"image 2018\"}", Charset.forName("UTF-8")));
-
+            entity.addPart("file", new InputStreamBody(fis, inFile.getName()));
             httppost.setEntity(entity);
+
+            entity.addPart("remark", new StringBody("{\"image 2018\"}", Charset.forName("UTF-8")));
 
             // execute the request
             HttpResponse response = httpclient.execute(httppost);
-            
+
             int statusCode = response.getStatusLine().getStatusCode();
             HttpEntity responseEntity = response.getEntity();
             String responseString = EntityUtils.toString(responseEntity, "UTF-8");
