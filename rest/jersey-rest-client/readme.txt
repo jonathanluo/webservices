@@ -21,9 +21,9 @@ Download Download JAR file jersey-media-multipart 2.25.1 with all dependencies
 
 Copy all jars from following directories of download jersey zip folder in WEB-INF/lib directory of the project.
 
-cp /j01/sys/jaxrs-ri-2.25.1/api/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
-cp /j01/sys/jaxrs-ri-2.25.1/ext/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
-cp /j01/sys/jaxrs-ri-2.25.1/lib/*  ~/workspace/github/jon/webservices/rest/tpoint/WebContent/WEB-INF/lib
+cp /j01/sys/jaxrs-ri-2.25.1/api/*  ~/workspace/github/jon/webservices/rest/jersey-rest-client/WebContent/WEB-INF/lib
+cp /j01/sys/jaxrs-ri-2.25.1/ext/*  ~/workspace/github/jon/webservices/rest/jersey-rest-client/WebContent/WEB-INF/lib
+cp /j01/sys/jaxrs-ri-2.25.1/lib/*  ~/workspace/github/jon/webservices/rest/jersey-rest-client/WebContent/WEB-INF/lib
 
 Creating the WebContent/WEB-INF/Web.xml configuration File
 
