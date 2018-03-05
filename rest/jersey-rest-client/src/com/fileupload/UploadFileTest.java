@@ -16,22 +16,30 @@ import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 /**
  * https://howtodoinjava.com/jersey/jersey-file-upload-example/ 
  * Test file upload using java client
+ * 
+ * see also project jersey-rest-fileupload
+ * 
  */
 public class UploadFileTest {
-	public static void main(String[] args) throws IOException
-	{
-	    final Client client = ClientBuilder.newBuilder().register(MultiPartFeature.class).build();
-	 
-	    final FileDataBodyPart filePart = new FileDataBodyPart("file", new File("C:/temp/sample.pdf"));
-	    FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
-	    final FormDataMultiPart multipart = (FormDataMultiPart) formDataMultiPart.field("foo", "bar").bodyPart(filePart);
-	      
-	    final WebTarget target = client.target("http://localhost:8080/JerseyDemos/rest/upload/pdf");
-	    final Response response = target.request().post(Entity.entity(multipart, multipart.getMediaType()));
-	     
-	    //Use response object to verify upload success
-	     
-	    formDataMultiPart.close();
-	    multipart.close();
-	}
+
+    public static void main(String[] args) throws IOException {
+        final Client client = ClientBuilder.newBuilder().register(MultiPartFeature.class).build();
+
+        final FileDataBodyPart filePart = new FileDataBodyPart("file", new File("/home/moonwave/Pictures/track-and-field.jpg"));
+        FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
+        final FormDataMultiPart multipart = (FormDataMultiPart) formDataMultiPart.field("remark", "core image").bodyPart(filePart);
+
+        final WebTarget target = client.target("http://localhost:8000/file/upload/");
+        final Response response = target.request().post(Entity.entity(multipart, multipart.getMediaType()));
+
+        //Use response object to verify upload success
+        System.out.println(response.getStatus() + " " + response.getStatusInfo() + " " + response);
+
+        formDataMultiPart.close();
+        multipart.close();
+    }
 }
+
+/*
+201 Created InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:8000/file/upload/, status=201, reason=Created}}
+*/
