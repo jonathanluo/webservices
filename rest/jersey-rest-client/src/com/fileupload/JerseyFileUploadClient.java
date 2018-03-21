@@ -19,7 +19,6 @@ import org.glassfish.jersey.media.multipart.BodyPart;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 import org.json.JSONObject;
 
-
 /**
  * https://stackoverflow.com/questions/24637038/jersey-2-multipart-upload-client
  * https://gist.github.com/damianmcdonald/f4ccc7805305daf5691f
@@ -36,7 +35,10 @@ public class JerseyFileUploadClient {
 
     private static final String TARGET_URL = "http://localhost:8000/file/upload/";
 
-    public JerseyFileUploadClient(File fileToUpload) {
+    public JerseyFileUploadClient() {
+    }
+
+    public String upload(File fileToUpload) {
         Client client = ClientBuilder.newBuilder()
             .register(MultiPartFeature.class).build();
         WebTarget webTarget = client.target(TARGET_URL);
@@ -71,18 +73,21 @@ public class JerseyFileUploadClient {
                 .bodyPart(fileDataBodyPart);
         multiPart.setMediaType(MediaType.MULTIPART_FORM_DATA_TYPE);
 
-        // POST request final
         Response response = webTarget.request(MediaType.APPLICATION_JSON_TYPE)
             .post(Entity.entity(multiPart, multiPart.getMediaType()));
 
         System.out.println(response.getStatus() + " "
             + response.getStatusInfo() + " " + response);
+
+        String data = response.readEntity(String.class);
+        return data;
     }
 
     public static void main(String[] args) {
-        new JerseyFileUploadClient(new File("/home/moonwave/Pictures/track-and-field.jpg"));
-        new JerseyFileUploadClient(new File("/home/moonwave/Pictures/pydev-run-1.png"));
-        new JerseyFileUploadClient(new File("/home/moonwave/Pictures/pydev-run-2.png"));
+        JerseyFileUploadClient client = new JerseyFileUploadClient();
+        client.upload(new File("/home/moonwave/Pictures/track-and-field.jpg"));
+        client.upload(new File("/home/moonwave/Pictures/pydev-run-1.png"));
+        client.upload(new File("/home/moonwave/Pictures/pydev-run-2.png"));
     }
 }
 /**
