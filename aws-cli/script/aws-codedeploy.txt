@@ -1,0 +1,74 @@
+https://docs.aws.amazon.com/codedeploy/latest/APIReference/Welcome.html
+https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html
+https://aws.amazon.com/lambda/
+https://github.com/aws-samples/lambda-refarch-webapp
+https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html
+https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorials-github.html
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-ec2-create.html
+
+For Ubuntu Server
+
+Important
+If you are installing the CodeDeploy agent on Ubuntu Server 14.04, change the third line the following:
+apt-get -y install ruby2.0
+#!/bin/bash
+apt-get -y update
+apt-get -y install ruby
+apt-get -y install wget
+cd /home/ubuntu
+wget https://bucket-name.s3.amazonaws.com/latest/install
+i.e.
+wget https://aws-codedeploy-us-west-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+./install auto
+
+I, [2019-03-25T22:44:33.769963 #22127]  INFO -- : Starting Ruby version check.
+I, [2019-03-25T22:44:33.770184 #22127]  INFO -- : Starting update check.
+I, [2019-03-25T22:44:33.770256 #22127]  INFO -- : Attempting to automatically detect supported package manager type for system...
+W, [2019-03-25T22:44:33.782012 #22127]  WARN -- : apt-get found but no gdebi. Installing gdebi with `apt-get install gdebi-core -y`...
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  gdebi-core
+0 upgraded, 1 newly installed, 0 to remove and 301 not upgraded.
+Need to get 9,716 B of archives.
+After this operation, 135 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu xenial/main amd64 gdebi-core all 0.9.5.7ubuntu1 [9,716 B]
+Fetched 9,716 B in 0s (18.9 kB/s)
+Selecting previously unselected package gdebi-core.
+(Reading database ... 288087 files and directories currently installed.)
+Preparing to unpack .../gdebi-core_0.9.5.7ubuntu1_all.deb ...
+Unpacking gdebi-core (0.9.5.7ubuntu1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up gdebi-core (0.9.5.7ubuntu1) ...
+I, [2019-03-25T22:44:40.436072 #22127]  INFO -- : Checking AWS_REGION environment variable for region information...
+I, [2019-03-25T22:44:40.436234 #22127]  INFO -- : Checking EC2 metadata service for region information...
+W, [2019-03-25T22:44:43.539376 #22127]  WARN -- : Could not get region from EC2 metadata service at 'http://169.254.169.254/latest/meta-data/placement/availability-zone'
+I, [2019-03-25T22:44:43.539751 #22127]  INFO -- : Using fail-safe default region: us-east-1
+dpkg-query: package 'codedeploy-agent' is not installed and no information is available
+Use dpkg --info (= dpkg-deb --info) to examine archive files,
+and dpkg --contents (= dpkg-deb --contents) to list their contents.
+I, [2019-03-25T22:44:43.606080 #22127]  INFO -- : Running version No running version
+I, [2019-03-25T22:44:43.606372 #22127]  INFO -- : Downloading version file from bucket aws-codedeploy-us-east-1 and key latest/VERSION...
+I, [2019-03-25T22:44:44.026180 #22127]  INFO -- : Downloading version file from bucket aws-codedeploy-us-east-1 and key latest/VERSION...
+I, [2019-03-25T22:44:44.418222 #22127]  INFO -- : Downloading package from bucket aws-codedeploy-us-east-1 and key releases/codedeploy-agent_1.0-1.1597_all.deb...
+I, [2019-03-25T22:44:50.109831 #22127]  INFO -- : Executing `/usr/bin/gdebi -n -o Dpkg::Options::=--force-confdef -o Dkpg::Options::=--force-confold /tmp/codedeploy-agent_1.0-1.1597_all.tmp-20190325-22127-r23lu0.deb`...
+Reading package lists... Done
+Building dependency tree        
+Reading state information... Done
+Reading state information... Done
+Selecting previously unselected package codedeploy-agent.
+(Reading database ... 288101 files and directories currently installed.)
+Preparing to unpack .../codedeploy-agent_1.0-1.1597_all.tmp-20190325-22127-r23lu0.deb ...
+Unpacking codedeploy-agent (1.0-1.1597) ...
+Setting up codedeploy-agent (1.0-1.1597) ...
+Starting codedeploy-agent:Installing Installing codedeploy-agent auto-update cron in '/etc/cron.d/codedeploy-agent-update'...
+Installing codedeploy-agent auto-update cron in '/etc/cron.d/codedeploy-agent-update'...Complete
+Processing triggers for systemd (229-4ubuntu21.16) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+I, [2019-03-25T22:44:56.377856 #22127]  INFO -- : Update check complete.
+I, [2019-03-25T22:44:56.378122 #22127]  INFO -- : Stopping updater.
+

@@ -1,0 +1,102 @@
+https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html
+
+aws ec2 create-key-pair --key-name my-key-pair
+aws ec2 delete-key-pair --key-name=-mykey
+
+aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro,m1.medium" "Name=availability-zone,Values=us-west-2c"
+aws ec2 describe-instances --filters file://filter.json
+aws ec2 describe-instances --filters 
+
+aws ec2 run-instances --image-id ami-12345678 --block-device-mappings '[{"DeviceName":"/dev/sdb","Ebs":{"VolumeSize":20,"DeleteOnTermination":false,"VolumeType":"standard"}}]'
+aws ec2 stop-instances --instance-ids i-1486157a i-1286157c i-ec3a7e87
+aws ec2 create-tags --resources i-1286157c --tags Key=My1stTag,Value=Value1 Key=My2ndTag,Value=Value2 Key=My3rdTag,Value=Value3
+
+
+aws sqs create-queue --queue-name my-queue --attributes '{ "RedrivePolicy":"{\"deadLetterTargetArn\":\"arn:aws:sqs:us-west-2:0123456789012:deadletter\", \"maxReceiveCount\":\"5\"}"}'
+
+
+aws dynamodb get-item --table-name my-table --key '{"id": {"N":"1"}}'
+{
+    "Item": {
+        "name": {
+            "S": "John"
+        },
+        "id": {
+            "N": "1"
+        }
+    }
+}
+
+aws dynamodb update-table --provisioned-throughput ReadCapacityUnits=15,WriteCapacityUnits=10 --table-name MyDDBTable
+aws dynamodb update-table --provisioned-throughput '{"ReadCapacityUnits":15,"WriteCapacityUnits":10}' --table-name MyDDBTable
+
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-pagination.html
+aws s3api put-object --bucket my-bucket --key testimage.png --body /tmp/image.png
+aws s3api list-objects --bucket my-bucket --page-size 100
+aws s3api list-objects --bucket my-bucket --max-items 100
+aws s3api list-objects --bucket my-bucket --max-items 100 --starting-token eyJNYXJrZXIiOiBudWxsLCAiYm90b190cnVuY2F0ZV9hbW91bnQiOiAxfQ==
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+Using the AWS CLI to Work with AWS Services
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-services.html
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-dynamodb.html
+    Amazon DynamoDB is a fully managed NoSQL database service that provides fast
+    and predictable performance with seamless scalability.
+
+    aws dynamodb help
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2.html
+    Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity
+    in the Amazon Web Services (AWS) cloud
+
+    aws ec2 help
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-glacier.html
+    Amazon S3 Glacier is a secure, durable, and extremely low-cost cloud storage
+    service for data archiving and long-term backup
+
+    aws glacier help
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-iam.html
+    AWS Identity and Access Management (IAM) enables you to securely control
+    access to AWS services and resources for your users.
+
+    aws iam help
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3.html
+    Amazon S3 or Amazon Simple Storage Service is a "simple storage service" offered
+    by Amazon Web Services that provides object storage through a web service interface.
+
+    aws s3 help
+    aws s3api help
+    Using High-Level (s3) Commands with the AWS CLI
+    Using API-Level (s3api) Commands with the AWS CLI
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-sns.html
+    Amazon Simple Notification Service (SNS) is a highly available, durable, secure,
+    fully managed pub/sub messaging service that enables you to decouple microservices,
+    distributed systems, and serverless applications. Amazon SNS provides topics
+    for high-throughput, push-based, many-to-many messaging.
+
+    aws sns help
+
+    Topics
+        Create a Topic
+        Subscribe to a Topic
+        Publish to a Topic
+        Unsubscribe from a Topic
+        Delete a Topic
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-swf.html
+    Amazon Simple Workflow Service (SWF) is a web service that makes it easy to
+    coordinate work across distributed application components
+
+    aws swf help
+
+    Commands Related to Activities
+    Commands Related to Deciders
+    Commands Related to Workflow Executions
+    Commands Related to Administration
+    Visibility Commands
